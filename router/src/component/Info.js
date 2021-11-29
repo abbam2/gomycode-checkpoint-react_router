@@ -1,7 +1,21 @@
 import React from "react";
 import Retour from "./Retour";
 
+import { useParams } from "react-router-dom";
+import Moviegrid from "./Moviegrid";
+
 const Info = (props) => {
+
+  let movieId= useParams().id;
+  
+  let movie;
+
+  movie = props.movies.find(movie => movie.id == movieId)
+
+
+
+
+
   return (
       
     <div className="info">
@@ -12,7 +26,7 @@ const Info = (props) => {
       <iframe
         width="600"
         height="515"
-        src="https://www.youtube.com/embed/ivvOKs7B-Vw"
+        src={movie.link}
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -21,7 +35,7 @@ const Info = (props) => {
 
       </div>
       <div className="div-info">
-        <h1 className="h1">Aquaman</h1>
+        <h1 className="h1">{movie.title}</h1>
         <h2 className="h2">Saison 1</h2>
         <p className="para">
           Lorem Ipsum is simply dummy text of the printing and typesetting
